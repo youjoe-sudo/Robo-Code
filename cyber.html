@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Security</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(to right , rgb(9, 9, 66), rgb(16, 16, 124));
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; }
+    #lang-btn {
+      background: #00ff99;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #lang-btn:hover { background: #00cc77; }
+    .container {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn:hover { background: #00cc77; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title"><i class="fa-solid fa-shield-halved"></i> الأمن السيبراني</h1>
+    <button id="lang-btn">EN</button>
+  </header>
+
+  <div class="container">
+    <h2 id="intro-title">مقدمة</h2>
+    <p id="intro-text">
+      الأمن السيبراني بيحمي البيانات والأنظمة من الهجمات. ده مجال مطلوب جدًا وفيه فرص شغل عالمية.
+    </p>
+
+    <h2 id="topics-title">الموضوعات اللي هتتعلمها</h2>
+    <ul id="topics-list">
+      <li>أساسيات الشبكات</li>
+      <li>اختبار الاختراق (Penetration Testing)</li>
+      <li>التشفير وطرق حماية البيانات</li>
+      <li>إدارة الحوادث الأمنية</li>
+    </ul>
+
+    <a href="index.html" id="back-btn" class="btn">⬅ العودة للصفحة الرئيسية</a>
+  </div>
+
+  <script>
+    const content = {
+      ar: {
+        title: "الأمن السيبراني",
+        introTitle: "مقدمة",
+        introText: "الأمن السيبراني بيحمي البيانات والأنظمة من الهجمات. ده مجال مطلوب جدًا وفيه فرص شغل عالمية.",
+        topicsTitle: "الموضوعات اللي هتتعلمها",
+        topics: [
+          "أساسيات الشبكات",
+          "اختبار الاختراق (Penetration Testing)",
+          "التشفير وطرق حماية البيانات",
+          "إدارة الحوادث الأمنية"
+        ],
+        backBtn: "⬅ العودة للصفحة الرئيسية"
+      },
+      en: {
+        title: "Cyber Security",
+        introTitle: "Introduction",
+        introText: "Cybersecurity protects data and systems from attacks. It’s a highly demanded field with global job opportunities.",
+        topicsTitle: "Topics You Will Learn",
+        topics: [
+          "Networking Basics",
+          "Penetration Testing",
+          "Encryption & Data Protection",
+          "Incident Management"
+        ],
+        backBtn: "⬅ Back to Home"
+      }
+    };
+
+    let currentLang = "ar";
+
+    document.getElementById("lang-btn").addEventListener("click", () => {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      updateContent();
+    });
+
+    function updateContent() {
+      const lang = content[currentLang];
+      document.getElementById("title").innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${lang.title}`;
+      document.getElementById("intro-title").textContent = lang.introTitle;
+      document.getElementById("intro-text").textContent = lang.introText;
+      document.getElementById("topics-title").textContent = lang.topicsTitle;
+
+      const list = document.getElementById("topics-list");
+      list.innerHTML = "";
+      lang.topics.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      document.getElementById("back-btn").textContent = lang.backBtn;
+      document.getElementById("lang-btn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+    }
+
+    updateContent();
+  </script>
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robocode Academy</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Robocode Academy">
+  <meta property="og:description" content="Robocode Academy - مساحة تعليمية للبنات في عالم البرمجة والأمن السيبراني.">
+  <meta property="og:image" content="Robo.jpg">
+  <meta property="og:locale" content="ar_AR">
+  <meta name="description" content="Robocode Academy: كورسات عملية، جلسات تفاعلية، مجتمع داعم ومشجع للبنات في عالم البرمجة والأمن السيبراني.">
+  <meta name="author" content="Mohamed Abdelfatah , Roaa Mohamed">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+
+  <style>
+    :root {
+      --main-bg: #061b3a;      /* كحلي */
+      --primary: #ffd700;      /* دهبي */
+      --text-light: #ffffff;   /* أبيض */
+      --accent: #6a5acd;       /* بنفسجي فاتح */
+    }
+    #contact-form{
+      background-color: #061b3a;
+    }
+
+    body {
+      background: linear-gradient(to right , var(--main-bg), #10107c);
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      color: var(--text-light);
+    }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a0a3a;
+  padding: 12px 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+nav .brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 4px solid #061b3a;
+}
+
+
+#langBtn {
+  margin-left: auto;
+  margin-right: 20px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #ffd700;
+  color: #0a0a3a;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#langBtn:hover {
+  background: #ffea70;
+}
+
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+#nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+#nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+#nav-links li a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ffd700;
+  transition: 0.3s;
+}
+
+#nav-links li a:hover {
+  color: #ffd700;
+}
+
+#nav-links li a:hover::after {
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  #langBtn {
+    order: 2;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: 15px;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    background: #0a0a3a;
+    padding: 20px;
+    border-radius: 12px;
+    width: 220px;
+    gap: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+
+  #nav-links.active {
+    display: flex;
+    animation: slideDown 0.35s ease;
+  }
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    #about {
+      background-color: var(--main-bg);
+      padding: 40px 20px;
+      line-height: 1.8;
+    }
+
+    #about h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    #about p, #about ul li {
+      font-size: 18px;
+    }
+
+    #about ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #about ul li {
+      margin: 8px 0;
+    }
+
+    #features {
+      background-color: var(--main-bg);
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    #features h2 {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 40px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .feature {
+      background: #ffff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color:#114086 ;
+    }
+
+    .feature p {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+
+    .whatsapp-float {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      bottom: 20px;
+      right: 20px;
+      text-decoration: none;
+      background-color: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 26px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20b358;
+    }
+
+
+    footer {
+      background: var(--main-bg);
+      color: var(--text-light);
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    #contact-form {
+    background: #061b3a;
+    text-align: center;
+    padding: 70px 20px;
+    color: #fff;
+  }
+
+  #contact-form h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #00d9ff;
+    font-weight: bold;
+  }
+
+  #contact-form form {
+    max-width: 500px;
+    margin: auto;
+    text-align: right;
+    background: rgba(255,255,255,0.03);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.15);
+  }
+
+  #contact-form input,
+  #contact-form textarea {
+    width: 93%;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #00d9ff;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    border-color: #fff;
+    box-shadow: 0 0 10px #00d9ff;
+  }
+
+  #contact-form button {
+    background: #00d9ff;
+    color: #000;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100%;
+  }
+
+  #contact-form button:hover {
+    background: #00bcd4;
+    box-shadow: 0 0 12px #00d9ff;
+  }
+
+  .social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .social-links a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #00d9ff;
+    color: #061b3a;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+
+  .social-links a:hover {
+    background: #fff;
+    color: #000000;
+    transform: scale(1.1);
+  }
+    #slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+
+  .slider-container {
+    position: relative;
+  }
+
+  .slide {
+    display: none;
+    width: 100%;
+  }
+
+  .slide img {
+    width: 100%;
+  }
+
+  .active {
+    display: block;
+    animation: fade 1s ease-in-out;
+  }
+
+  @keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+  }
+
+  /* أزرار التنقل */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.4);
+    transform: translateY(-50%);
+    transition: 0.3s;
+    user-select: none;
+  }
+
+  .prev:hover, .next:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .prev { left: 15px; }
+  .next { right: 15px; }
+
+  /* النقاط */
+  .dots {
+    text-align: center;
+    padding: 12px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 0 0 12px 12px;
+  }
+
+  .dots span {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.4s;
+  }
+
+  .dots .active-dot {
+    background-color: #00d9ff;
+    transform: scale(1.2);
+  }
+    .faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 15px;
+    text-align: right;
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #00d9ff;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  .faq-question:hover {
+    background: rgba(0,217,255,0.1);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background: rgba(0,0,0,0.2);
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 15px;
+  }
+  </style>
+</head>
+<body>
+
+
+<nav>
+  <div class="brand">
+    <img src="Robo.jpg" alt="logo">
+    <span>Robocode Academy</span>
+  </div>
+  <button id="langBtn" onclick="switchLang()">EN</button>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+
+  <ul id="nav-links">
+    <span class="close-btn" onclick="toggleMenu()">×</span>
+    <li><a href="#" data-key="home">الرئيسية</a></li>
+    <li><a href="#about" data-key="aboutLink">من نحن</a></li>
+    <li><a href="#contact-form" data-key="contactLink">تواصل معنا</a></li>
+    <li><a href="#features" data-key="featuresLink">المميزات</a></li>
+    <li><a href="course.html" data-key="coursesLink">الكورسات</a></li>
+  </ul>
+</nav>
+
+<section>
+  <!-- Slider Section -->
+<section id="slider">
+  <div class="slider-container">
+    <div class="slide active">
+      <img src="1.jpg" alt="صورة 1">
+    </div>
+    <div class="slide">
+      <img src="2.jpg" alt="صورة 2">
+    </div>
+    <div class="slide">
+      <img src="3.jpg" alt="صورة 3">
+    </div>
+    <div class="slide">
+      <img src="4.jpg" alt="صورة 3">
+    </div>
+    <div class="slide">
+      <img src="5.jpg" alt="صورة 3">
+    </div>
+    <!-- أزرار -->
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+
+    <!-- نقاط -->
+    <div class="dots"></div>
+  </div>
+</section>
+
+
+  <section id="features">
+    <h2 data-key="featuresTitle" data-aos="fade-up">مميزات فريقنا</h2>
+    <div class="features">
+      <div class="feature" data-aos="zoom-in">
+        <h3 data-key="feature1Title">مدربين محترفين</h3>
+        <p data-key="feature1Desc">فريق متنوع من شباب وفتيات شغوفين بالتكنولوجيا، بيشرحوا بطريقة سهلة وبأسلوب تفاعلي عبر الإنترنت.</p>
+      </div>
+      <div class="feature" data-aos="zoom-in" data-aos-delay="100">
+        <h3 data-key="feature2Title"> تعليم عملي من أي مكان</h3>
+        <p data-key="feature2Desc">كل التدريبات والورش متاحة أونلاين، تقدر تتعلم وتطبّق في وقتك ومن مكانك.</p>
+      </div>
+      <div class="feature" data-aos="zoom-in" data-aos-delay="200">
+        <h3 data-key="feature3Title">متابعه ودعم مستمر</h3>
+        <p data-key="feature3Desc">إحنا معاك خطوة بخطوة عبر الجلسات المباشرة والدعم الفوري طول رحلتك.</p>
+      </div>
+      <div class="feature" data-aos="zoom-in" data-aos-delay="300">
+        <h3 data-key="feature4Title"> ابتكار بلا حدود</h3>
+        <p data-key="feature4Desc">بنساعدك تشتغل على مشاريع فعلية وتحوّل أفكارك لواقع رقمي.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" data-aos="fade-up">
+    <h2 data-key="aboutTitle">من نحن</h2>
+    <p data-key="aboutP1">إحنا <strong>Robocode Academy</strong>، مساحة تعليمية مبتكرة مخصصة للبنات اللي عايزين يدخلوا عالم البرمجة، تصميم الجرافيك، التسويق الرقمي، تطوير تطبيقات الموبايل والأمن السيبراني.</p>
+    <p data-key="aboutP2">هدفنا إننا نكسر الحواجز، ونفتح أبواب جديدة للبنات في مجال التكنولوجيا، ونوفر لهم:</p>
+    <ul>
+      <li data-key="f1"> فرص حقيقية للتعلم والتطبيق والتميز</li>
+    </ul>
+  </section>
+<section id="faq" style="background:#061b3a; color:#fff; padding:50px 20px; font-family:'Cairo', sans-serif;">
+  <h2 data-key="faq_title" style="text-align:center; font-size:2rem; margin-bottom:30px; color:#00d9ff;">الأسئلة الشائعة</h2>
+  
+  <div class="faq-item">
+    <button class="faq-question" data-key="faq_q1">هل لازم أكون عندي خلفية في البرمجة قبل ما أبدأ؟</button>
+    <div class="faq-answer">
+      <p data-key="faq_a1">لأ، الأكاديمية بتبدأ معاك من الأساسيات خطوة بخطوة.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" data-key="faq_q2">إيه مميزات الأكاديمية مقارنة بغيرها؟</button>
+    <div class="faq-answer">
+      <p data-key="faq_a2">شرح بسيط، تطبيق عملي، مجتمع داعم، فرص للتطوع والانضمام لفريق العمل.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" data-key="faq_q3">هل في شهادات بعد الكورس؟</button>
+    <div class="faq-answer">
+      <p data-key="faq_a3">ايوا , بنوفر شهادات الكترونيه بعد اتمام</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" data-key="faq_q4">هل في دعم أو مساعدة لو وقفت في أي جزء؟</button>
+    <div class="faq-answer">
+      <p data-key="faq_a4">أيوة، في جروبات دعم على واتساب/تليجرام علشان تلاقي إجابات لأي سؤال.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact-form">
+  <h2 data-key="contact">راسلنا الآن</h2>
+
+  <form id="myForm">
+    <input type="text" id="name" name="name" placeholder="الاسم" required>
+    <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+    <textarea id="message" name="message" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+    <button type="submit" data-key="conbtn">إرسال</button>
+  </form>
+
+  <div class="social-links">
+    <a href="https://www.facebook.com/share/p/1EVqqDi5yL/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/robocode__academy?igsh=OHJrYmhteG8wb2J4" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7369465489720250368" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://wa.me/201128455990" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</section>
+
+
+
+
+  <a href="https://wa.me/201128455990" class="whatsapp-float" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+
+  <footer data-key="foot">
+    © 2025 Robocode Academy - جميع الحقوق محفوظة
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('active');
+  }
+
+  const translations = {
+    ar: {
+      f1: "فرص حقيقيه للتعلم والتطبيق والتميز",
+      faq_title: "الأسئلة الشائعة",
+      faq_q1: "هل لازم أكون عندي خلفية في البرمجة قبل ما أبدأ؟",
+      faq_a1: "لأ، الأكاديمية بتبدأ معاك من الأساسيات خطوة بخطوة.",
+      faq_q2: "إيه مميزات الأكاديمية مقارنة بغيرها؟",
+      faq_a2: "شرح بسيط، تطبيق عملي، مجتمع داعم، فرص للتطوع والانضمام لفريق العمل.",
+      faq_q3: "هل في شهادات بعد الكورس؟",
+      faq_a3: "أيوة، بنوفر شهادات إلكترونية بعد إتمام الكورس.",
+      faq_q4: "هل في دعم أو مساعدة لو وقفت في أي جزء؟",
+      faq_a4: "أيوة، في جروبات دعم على واتساب/تليجرام علشان تلاقي إجابات لأي سؤال.",
+      foot: " © 2025 Robocode Academy - جميع الحقوق محفوظة",
+      conbtn: "ارسال",
+      conform : "ارسل رساله",
+      contact: "راسلنا الان",
+      home: "الرئيسية",
+      aboutLink: "من نحن",
+      contactLink: "تواصل معنا",
+      featuresLink: "المميزات",
+      coursesLink: "الكورسات",
+      aboutTitle: "من نحن",
+      aboutP1: "إحنا Robocode Academy، مساحة تعليمية مبتكرة مخصصة للبنات اللي عايزين يدخلوا عالم البرمجة، تصميم الجرافيك، التسويق الرقمي، تطوير تطبيقات الموبايل والأمن السيبراني.",
+      aboutP2: "هدفنا إننا نكسر الحواجز، ونفتح أبواب جديدة للبنات في مجال التكنولوجيا، ونوفر لهم:",
+      featuresTitle: "مميزات فريقنا",
+      feature1Title: "مدربين محترفين",
+      feature1Desc: "فريق متنوع من شباب وفتيات شغوفين بالتكنولوجيا، بيشرحوا بطريقة سهلة وبأسلوب تفاعلي عبر الإنترنت.",
+      feature2Title: "تعليم عملي من أي مكان",
+      feature2Desc: "كل التدريبات والورش متاحة أونلاين، تقدر تتعلم وتطبّق في وقتك ومن مكانك.",
+      feature3Title: "متابعه ودعم مستمر",
+      feature3Desc: "إحنا معاك خطوة بخطوة عبر الجلسات المباشرة والدعم الفوري طول رحلتك.",
+      feature4Title: "ابتكار بلا حدود",
+      feature4Desc: "بنساعدك تشتغل على مشاريع فعلية وتحوّل أفكارك لواقع رقمي."
+    },
+    en: {
+      f1: "Real opportunities for learning, application and excellence",
+      faq_title: "Frequently Asked Questions",
+      faq_q1: "Do I need prior programming knowledge before starting?",
+      faq_a1: "No, the academy starts with the basics step by step.",
+      faq_q2: "What makes the academy different from others?",
+      faq_a2: "Simple explanations, hands-on practice, supportive community, and volunteering opportunities.",
+      faq_q3: "Are there certificates after the course?",
+      faq_a3: "Yes, we provide electronic certificates after completion.",
+      faq_q4: "Is there support if I get stuck?",
+      faq_a4: "Yes, we have WhatsApp/Telegram support groups to help you with any questions.",
+      foot: "© 2025 Robocode Academy - All rights reserved",
+      home: "Home",
+      conbtn : "Send",
+      conform : "Send Message",
+      contact : "Contact US",
+      aboutLink: "About",
+      contactLink: "Contact",
+      featuresLink: "Features",
+      coursesLink: "Courses",
+      aboutTitle: "About Us",
+      aboutP1: "We are Robocode Academy, an innovative learning space dedicated to girls who want to explore programming, graphic design, digital marketing, mobile app development, and cybersecurity.",
+      aboutP2: "Our goal is to break barriers and open new doors for girls in technology, offering them:",
+      featuresTitle: "Our Team Features",
+      feature1Title: "Professional Trainers",
+      feature1Desc: "A diverse team of passionate young men and women in tech, teaching interactively and simply online.",
+      feature2Title: "Practical Learning Anywhere",
+      feature2Desc: "All workshops and training are available online; you can learn and practice anytime, anywhere.",
+      feature3Title: "Continuous Support",
+      feature3Desc: "We’re with you every step of the way through live sessions and instant support.",
+      feature4Title: "Unlimited Innovation",
+      feature4Desc: "We help you work on real projects and turn your ideas into digital reality."
+    }
+  };
+
+  let currentLang = "ar";
+
+  function switchLang() {
+    currentLang = currentLang === "ar" ? "en" : "ar";
+    document.getElementById("langBtn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      el.textContent = translations[currentLang][key];
+    });
+
+
+    document.documentElement.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
+    document.documentElement.setAttribute("lang", currentLang);
+  }
+  </script>
+  <!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("EYYN-lWflzOMQc4CQ"); // 🔑 Public Key بتاعك
+  })();
+
+  document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_yezlior", "template_9mad6wg", this)
+      .then(function() {
+        alert("✅ تم إرسال الرسالة بنجاح!");
+        document.getElementById("myForm").reset();
+      }, function(error) {
+        alert("❌ حصل خطأ: " + JSON.stringify(error));
+      });
+  });
+    let slideIndex = 0;
+  let slides = document.querySelectorAll("#slider .slide");
+  let dotsContainer = document.querySelector("#slider .dots");
+
+  slides.forEach((_, i) => {
+    let dot = document.createElement("span");
+    dot.addEventListener("click", () => showSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  let dots = dotsContainer.querySelectorAll("span");
+
+  function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active-dot"));
+
+    slides[n].classList.add("active");
+    dots[n].classList.add("active-dot");
+
+    slideIndex = n;
+  }
+
+  function nextSlide(n) {
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  document.querySelector("#slider .prev").addEventListener("click", () => nextSlide(-1));
+  document.querySelector("#slider .next").addEventListener("click", () => nextSlide(1));
+  setInterval(() => {
+    nextSlide(1);
+  }, 4000);
+  showSlide(slideIndex);
+    const faqs = document.querySelectorAll(".faq-item");
+
+  faqs.forEach(faq => {
+    faq.querySelector(".faq-question").addEventListener("click", () => {
+      faq.classList.toggle("active");
+      faqs.forEach(item => {
+        if (item !== faq) item.classList.remove("active");
+      });
+    });
+  });
+</script>
+</body>
+</html>

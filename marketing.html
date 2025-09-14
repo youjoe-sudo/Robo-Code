@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(to right , rgb(9, 9, 66), rgb(16, 16, 124));
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; }
+    .lang-btn {
+      background: #ffcc00;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #000;
+    }
+    .container {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #00cc77;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="page-title"><i class="fa-solid fa-bullhorn"></i> التسويق</h1>
+    <button class="lang-btn" onclick="switchLang()">EN</button>
+  </header>
+
+  <div class="container">
+    <h2 id="intro-title">مقدمة</h2>
+    <p id="intro-text">
+      التسويق الرقمي هو وسيلتك للوصول للعملاء وبناء علامة تجارية قوية. باستخدام استراتيجيات وأدوات حديثة، تقدر تزود مبيعاتك وتوسع نشاطك.
+    </p>
+
+    <h2 id="topics-title">الموضوعات اللي هتتعلمها</h2>
+    <ul>
+      <li id="topic1">تحسين محركات البحث (SEO)</li>
+      <li id="topic2">إعلانات ممولة (Google & Facebook Ads)</li>
+      <li id="topic3">التسويق بالمحتوى</li>
+      <li id="topic4">تحليل البيانات التسويقية</li>
+    </ul>
+
+    <a href="index.html" class="btn" id="back-btn">⬅ العودة للصفحة الرئيسية</a>
+  </div>
+
+  <script>
+    let currentLang = "ar";
+
+    const translations = {
+      ar: {
+        "page-title": "التسويق",
+        "intro-title": "مقدمة",
+        "intro-text": "التسويق الرقمي هو وسيلتك للوصول للعملاء وبناء علامة تجارية قوية. باستخدام استراتيجيات وأدوات حديثة، تقدر تزود مبيعاتك وتوسع نشاطك.",
+        "topics-title": "الموضوعات اللي هتتعلمها",
+        "topic1": "تحسين محركات البحث (SEO)",
+        "topic2": "إعلانات ممولة (Google & Facebook Ads)",
+        "topic3": "التسويق بالمحتوى",
+        "topic4": "تحليل البيانات التسويقية",
+        "back-btn": "⬅ العودة للصفحة الرئيسية"
+      },
+      en: {
+        "page-title": "Marketing",
+        "intro-title": "Introduction",
+        "intro-text": "Digital marketing is your way to reach customers and build a strong brand. With modern tools and strategies, you can boost sales and grow your business.",
+        "topics-title": "Topics You Will Learn",
+        "topic1": "Search Engine Optimization (SEO)",
+        "topic2": "Paid Ads (Google & Facebook Ads)",
+        "topic3": "Content Marketing",
+        "topic4": "Marketing Data Analysis",
+        "back-btn": "⬅ Back to Home"
+      }
+    };
+
+    function switchLang() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-btn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+      for (let key in translations[currentLang]) {
+        document.getElementById(key).textContent = translations[currentLang][key];
+      }
+    }
+  </script>
+</body>
+</html>

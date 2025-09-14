@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Design Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(to right , rgb(9, 9, 66), rgb(16, 16, 124));
+      color: white;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .lang-btn {
+      background: #ffcc00;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content ul li {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+
+    .btn {
+      display: block;
+      width: fit-content;
+      margin: 30px auto;
+      background: #00ff99;
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00cc77;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.5);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .content h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2 id="header-title">تصميم الجرافيك</h2>
+    <button class="lang-btn" onclick="switchLang()">EN</button>
+  </header>
+
+  <section class="hero">
+    <h1 id="course-title">دورة تصميم الجرافيك</h1>
+    <p id="course-desc">تعلم أساسيات التصميم وكيفية استخدام أدوات مثل Photoshop و Illustrator لابتكار تصميمات احترافية تناسب كل المجالات.</p>
+  </section>
+
+  <section class="content">
+    <h2 id="what-learn">ماذا ستتعلم؟</h2>
+    <ul>
+      <li id="point1">مبادئ التصميم وعلم الألوان.</li>
+      <li id="point2">استخدام أدوات Adobe Photoshop & Illustrator.</li>
+      <li id="point3">تصميم الشعارات والبوسترات الاحترافية.</li>
+      <li id="point4">أساسيات الهوية البصرية.</li>
+    </ul>
+
+    <a href="#" class="btn" id="cta">ابدأ الآن</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Robocode Academy. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script>
+    let currentLang = "ar";
+
+    const translations = {
+      ar: {
+        "header-title": "تصميم الجرافيك",
+        "course-title": "دورة تصميم الجرافيك",
+        "course-desc": "تعلم أساسيات التصميم وكيفية استخدام أدوات مثل Photoshop و Illustrator لابتكار تصميمات احترافية تناسب كل المجالات.",
+        "what-learn": "ماذا ستتعلم؟",
+        "point1": "مبادئ التصميم وعلم الألوان.",
+        "point2": "استخدام أدوات Adobe Photoshop & Illustrator.",
+        "point3": "تصميم الشعارات والبوسترات الاحترافية.",
+        "point4": "أساسيات الهوية البصرية.",
+        "cta": "ابدأ الآن"
+      },
+      en: {
+        "header-title": "Graphic Design",
+        "course-title": "Graphic Design Course",
+        "course-desc": "Learn the basics of design and how to use tools like Photoshop & Illustrator to create professional designs for all fields.",
+        "what-learn": "What will you learn?",
+        "point1": "Principles of design and color theory.",
+        "point2": "Using Adobe Photoshop & Illustrator tools.",
+        "point3": "Designing professional logos and posters.",
+        "point4": "Basics of visual identity.",
+        "cta": "Start Now"
+      }
+    };
+
+    function switchLang() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-btn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+      for (let key in translations[currentLang]) {
+        document.getElementById(key).textContent = translations[currentLang][key];
+      }
+    }
+  </script>
+</body>
+</html>

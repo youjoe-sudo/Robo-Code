@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(to right , rgb(9, 9, 66), rgb(16, 16, 124));
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; }
+    #lang-btn {
+      background: #00ff99;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #lang-btn:hover { background: #00cc77; }
+    .container {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn:hover { background: #00cc77; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title"><i class="fa-solid fa-code"></i> تطوير المواقع</h1>
+    <button id="lang-btn">EN</button>
+  </header>
+
+  <div class="container">
+    <h2 id="intro-title">مقدمة</h2>
+    <p id="intro-text">
+      تطوير المواقع مجال واسع بيجمع بين التصميم والبرمجة.
+      تقدر تبدأ بـ HTML, CSS, JavaScript وتطور لحد ما تشتغل بإطارات عمل زي React أو Angular.
+    </p>
+
+    <h2 id="topics-title">الموضوعات اللي هتتعلمها</h2>
+    <ul id="topics-list">
+      <li>أساسيات HTML و CSS</li>
+      <li>JavaScript و DOM</li>
+      <li>تصميم متجاوب (Responsive Design)</li>
+      <li>Backend باستخدام Node.js</li>
+    </ul>
+
+    <a href="index.html" id="back-btn" class="btn">⬅ العودة للصفحة الرئيسية</a>
+  </div>
+
+  <script>
+    const content = {
+      ar: {
+        title: "تطوير المواقع",
+        introTitle: "مقدمة",
+        introText: "تطوير المواقع مجال واسع بيجمع بين التصميم والبرمجة. تقدر تبدأ بـ HTML, CSS, JavaScript وتطور لحد ما تشتغل بإطارات عمل زي React أو Angular.",
+        topicsTitle: "الموضوعات اللي هتتعلمها",
+        topics: [
+          "أساسيات HTML و CSS",
+          "JavaScript و DOM",
+          "تصميم متجاوب (Responsive Design)",
+          "Backend باستخدام Node.js"
+        ],
+        backBtn: "⬅ العودة للصفحة الرئيسية"
+      },
+      en: {
+        title: "Web Development",
+        introTitle: "Introduction",
+        introText: "Web development is a wide field that combines design and programming. You can start with HTML, CSS, and JavaScript, then move on to frameworks like React or Angular.",
+        topicsTitle: "Topics You Will Learn",
+        topics: [
+          "Basics of HTML & CSS",
+          "JavaScript and DOM",
+          "Responsive Design",
+          "Backend with Node.js"
+        ],
+        backBtn: "⬅ Back to Home"
+      }
+    };
+
+    let currentLang = "ar";
+
+    document.getElementById("lang-btn").addEventListener("click", () => {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      updateContent();
+    });
+
+    function updateContent() {
+      const lang = content[currentLang];
+      document.getElementById("title").innerHTML = `<i class="fa-solid fa-code"></i> ${lang.title}`;
+      document.getElementById("intro-title").textContent = lang.introTitle;
+      document.getElementById("intro-text").textContent = lang.introText;
+      document.getElementById("topics-title").textContent = lang.topicsTitle;
+
+      const list = document.getElementById("topics-list");
+      list.innerHTML = "";
+      lang.topics.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      document.getElementById("back-btn").textContent = lang.backBtn;
+      document.getElementById("lang-btn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+    }
+
+    updateContent();
+  </script>
+</body>
+</html>

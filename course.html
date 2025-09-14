@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo' , Arial;
+      background: linear-gradient(to right , rgb(9, 9, 66), rgb(16, 16, 124));
+      color: white;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 2.5rem;
+    }
+
+    .course-content {
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .course h2, 
+    .course p {
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .course {
+      height: 350px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00cc77;
+      transform: scale(1.05);
+    }
+
+    .lang-btn {
+      background: #ffcc00;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+        padding: 20px 0;
+      }
+
+      .course {
+        height: 280px;
+        padding: 15px;
+      }
+
+      .course h2 {
+        font-size: 1.2rem;
+      }
+
+      .course p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .course::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* أسود شفاف */
+      z-index: 1;
+    }
+
+    .course .course-content {
+      position: relative;
+      z-index: 5; /* عشان النص يبقى فوق الطبقة */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2 id="header-title">كورساتي</h2>
+    <button class="lang-btn" onclick="switchLang()">EN</button>
+  </header>
+
+  <h1 id="main-title">استكشف الكورسات</h1>
+
+  <div class="courses">
+    <section class="course" style="background-image: url('app-development-banner_33099-1720.jpg');">
+      <div class="course-content">
+        <h2 id="app-title">تطوير تطبيقات الموبايل</h2>
+        <p id="app-desc">تعلم Flutter و React Native لبناء تطبيقات قوية</p>
+        <a href="app.html" class="btn" id="more1">تعرف على المزيد</a>
+      </div>
+    </section>
+
+    <section class="course" style="background-image: url('web.png');">
+      <div class="course-content">
+        <h2 id="web-title">تطوير مواقع الويب</h2>
+        <p id="web-desc">ابدأ رحلتك مع HTML, CSS, JavaScript</p>
+        <a href="web.html" class="btn" id="more2">تعرف على المزيد</a>
+      </div>
+    </section> 
+
+    <section class="course" style="background-image: url('graphic.png');">
+      <div class="course-content">
+        <h2 id="graphic-title">تصميم الجرافيك</h2>
+        <p id="graphic-desc">ابدأ رحلتك مع عالم التصميمات والصور والاشكال المختلفه</p>
+        <a href="graphic.html" class="btn" id="more3">تعرف على المزيد</a>
+      </div>
+    </section>
+
+    <section class="course" style="background-image: url('cyber.jpg');">
+      <div class="course-content">
+        <h2 id="cyber-title">الأمن السيبراني</h2>
+        <p id="cyber-desc">تعلم كيفية حماية الشبكات والتصدي للهجمات</p>
+        <a href="cyber.html" class="btn" id="more4">تعرف على المزيد</a>
+      </div>
+    </section>
+
+    <!-- كورس التسويق الرقمي -->
+    <section class="course" style="background-image: url('what-is-marketing.png');">
+      <div class="course-content">
+        <h2 id="marketing-title">التسويق الرقمي</h2>
+        <p id="marketing-desc">تعلم أساسيات التسويق عبر السوشيال ميديا والإعلانات الممولة</p>
+        <a href="marketing.html" class="btn" id="more5">تعرف على المزيد</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let currentLang = "ar";
+
+    const translations = {
+      ar: {
+        "header-title": "كورساتي",
+        "main-title": "استكشف الكورسات",
+        "app-title": "تطوير تطبيقات الموبايل",
+        "app-desc": "تعلم Flutter و React Native لبناء تطبيقات قوية",
+        "web-title": "تطوير مواقع الويب",
+        "web-desc": "ابدأ رحلتك مع HTML, CSS, JavaScript",
+        "graphic-title": "تصميم الجرافيك",
+        "graphic-desc": "ابدأ رحلتك مع عالم التصميمات والصور والاشكال المختلفه",
+        "cyber-title": "الأمن السيبراني",
+        "cyber-desc": "تعلم كيفية حماية الشبكات والتصدي للهجمات",
+        "marketing-title": "التسويق الرقمي",
+        "marketing-desc": "تعلم أساسيات التسويق عبر السوشيال ميديا والإعلانات الممولة",
+        "more1": "تعرف على المزيد",
+        "more2": "تعرف على المزيد",
+        "more3": "تعرف على المزيد",
+        "more4": "تعرف على المزيد",
+        "more5": "تعرف على المزيد"
+      },
+      en: {
+        "header-title": "My Courses",
+        "main-title": "Explore Our Courses",
+        "app-title": "App Development",
+        "app-desc": "Learn Flutter and React Native to build powerful apps",
+        "web-title": "Web Development",
+        "web-desc": "Start your journey with HTML, CSS, JavaScript",
+        "graphic-title": "Graphic Design",
+        "graphic-desc": "Start your journey with the world of different designs and shapes",
+        "cyber-title": "Cyber Security",
+        "cyber-desc": "Learn how to secure networks and prevent attacks",
+        "marketing-title": "Digital Marketing",
+        "marketing-desc": "Learn the basics of social media marketing and paid ads",
+        "more1": "Learn More",
+        "more2": "Learn More",
+        "more3": "Learn More",
+        "more4": "Learn More",
+        "more5": "Learn More"
+      }
+    };
+
+    function switchLang() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-btn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+      for (let key in translations[currentLang]) {
+        document.getElementById(key).textContent = translations[currentLang][key];
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(to right , rgb(9, 9, 66), rgb(16, 16, 124));
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { margin: 0; }
+    .lang-btn {
+      background: #ffcc00;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #000;
+    }
+    .container {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #00cc77;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="page-title"><i class="fa-solid fa-mobile-screen-button"></i> تطوير تطبيقات الموبايل</h1>
+    <button class="lang-btn" onclick="switchLang()">EN</button>
+  </header>
+
+  <div class="container">
+    <h2 id="intro-title">مقدمة</h2>
+    <p id="intro-text">
+      تطوير تطبيقات الموبايل من المجالات المطلوبه جدا وتحتاج لخبره واسعه ويمكنك العمل على تطبيقات مثل Android Studio وغيره
+    </p>
+
+    <h2 id="topics-title">الموضوعات اللي هتتعلمها</h2>
+    <ul>
+      <li id="topic1">أساسيات البرمجة للتطبيقات</li>
+      <li id="topic2">التعامل مع قواعد البيانات</li>
+      <li id="topic3">تصميم واجهة المستخدم UI/UX</li>
+      <li id="topic4">رفع التطبيق على Google Play & App Store</li>
+    </ul>
+
+    <a href="index.html" class="btn" id="back-btn">⬅ العودة للصفحة الرئيسية</a>
+  </div>
+
+  <script>
+    let currentLang = "ar";
+
+    const translations = {
+      ar: {
+        "page-title": "تطوير تطبيقات الموبايل",
+        "intro-title": "مقدمة",
+        "intro-text": "تطوير تطبيقات الموبايل من المجالات المطلوبه جدا وتحتاج لخبره واسعه ويمكنك العمل على تطبيقات مثل Android Studio وغيره",
+        "topics-title": "الموضوعات اللي هتتعلمها",
+        "topic1": "أساسيات البرمجة للتطبيقات",
+        "topic2": "التعامل مع قواعد البيانات",
+        "topic3": "تصميم واجهة المستخدم UI/UX",
+        "topic4": "رفع التطبيق على Google Play & App Store",
+        "back-btn": "⬅ العودة للصفحة الرئيسية"
+      },
+      en: {
+        "page-title": "App Development",
+        "intro-title": "Introduction",
+        "intro-text": "Mobile app development is one of the most demanded fields. It requires broad experience and you can work with tools like Android Studio and more.",
+        "topics-title": "Topics You Will Learn",
+        "topic1": "Programming basics for apps",
+        "topic2": "Working with databases",
+        "topic3": "User Interface & UX Design",
+        "topic4": "Publishing the app on Google Play & App Store",
+        "back-btn": "⬅ Back to Home"
+      }
+    };
+
+    function switchLang() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-btn").textContent = currentLang === "ar" ? "EN" : "AR";
+
+      for (let key in translations[currentLang]) {
+        document.getElementById(key).textContent = translations[currentLang][key];
+      }
+    }
+  </script>
+</body>
+</html>
